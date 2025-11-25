@@ -1,0 +1,50 @@
+## x) Read and summarize  
+### Schneier, B. Applied cryptography: Protocols, algorithms and source code in C / Chapter 1.1 Terminology
+Plaintext = message  
+Encryption = disguising message to hide its substance  
+Ciphertext = encrypted message  
+Decryption = process of turning ciphertext back into plaintext  
+Cryptography = the art and science of keeping messages secure  
+Cryptographers = practioners of cryptography  
+Cryptanalysis = the art and science of breaking ciphertext  
+Cryptoanalysts = practioners of cryptoanalysis  
+Cryptology = the branch of mathematics encompassing both cryptography and cryptanalysis  
+Cryptologists = practioners of cryptology  
+Cryptographic algorithm / cipher = is the mathematical function used in encryption and decryption  
+Restricted algorithm = an algorithm whose security relies on keeping its internal workings secret  
+Key = any one of a large number of values  
+Keyspace = the range of possible values of the key  
+A cryptosystem = an algorithm, plus all possible plaintexts, ciphertexts, and keys  
+Symmetric algorithms / conventional algorithms = algorithms where the encryption key can be calculated from the decryption key and vice versa  
+Stream algorithms / stream ciphers = operate on the plaintext a single bit (or sometimes byte) at a time  
+block algorithms / block ciphers = operate on the plaintext in groups of bits  
+Public-key algorithms / asymmetric algorithms = key used in encryption is different from the key used in decryption (the encryption key can be made public)   
+Public key = encryption key  
+Private key = decryption key  
+### Schneier, B. Applied cryptography: Protocols, algorithms and source code in C / Chapter 2 - 2.5 Communications Using Public-Key Cryptography & 2.6 Digital signatures  
+Public-key cryptography = using one public and the other private key
+Hybrid cryptosystem = a system that uses public-key cryptography to exchange session keys and symmetric cryptography to protect the actual message data
+Merkle's Puzzles = a public-key technique where one party sends many weakly encrypted “puzzles” and the other solves one to obtain a shared key
+Digital signature = a cryptographic mechanism that proves who signed a message and that the message hasn’t been altered
+Non-repudiation = the property that a signer cannot later deny having signed a specific message
+One-way hash function = a function that converts data into a fixed-size value that is easy to compute but infeasible to reverse or find collisions for
+Hash-based signing = signing the hash of a document instead of the document itself to improve speed and efficiency
+Collision resistance = the property that it is infeasible to find two different inputs that produce the same hash value
+Timestamp authority = a trusted third party that adds a trusted date-and-time stamp to a signed message
+Arbitrator symmetric = a signing scheme where a trusted third party shares symmetric keys with users and mediates all signature creation and verification
+Signing drawback = the dependence on a trusted arbitrator who becomes a bottleneck and a single point of failure
+Multiple signature = a scheme where several parties independently sign the same document (usually by signing its hash)
+Independent verification = the ability for any recipient to verify each signature separately without relying on other signers or intermediaries
+### Karvinen, T. (2023). PGP – Send encrypted and signed message – gpg.  
+Article shows how you can use PGP encryption with gpg-tool. It includes creating a keypair, exporting and importing public key, verifying fingerprint and thrusting the key.
+
+## a) Pubkey today
+”The most recent applications of standard RSA (Rivest, Shamir, Adleman) are incorporated in key exchanges, digital signatures, web browsers, chat applications, emails, VPNs and any other types of communication where data transmission between two parties is required” (Imam et al., 2021). Just yesterday alone, I sent emails and connected to the VPN from the aforementioned list. In VPN connections, the process typically starts with key generation, during which a pair of public and private keys is created. Encryption then transforms readable plain text into cipher text, while decryption reverses this process to restore the original data. TLS and SSL are security protocols designed to create an encrypted channel between a browser and a web server, ensuring that any information exchanged remains confidential and protected. TLS maintains privacy by preventing unauthorized parties from accessing the actual contents of the transmitted messages. It also ensures data integrity by detecting any alterations to the information in transit. Additionally, TLS provides authentication for at least one endpoint. Meanwhile, an SSL VPN delivers end-to-end encryption between the VPN client and server. (Yeboah-Ofori & Ganiyu, 2024)  
+
+## b) Encrypt a message.
+I chose CyberChef as my encryption tool and used its AES (Advanced Encryption Standard) module. I wanted to experiment with how well lightweight message encryption works, and CyberChef is a familiar tool to me. For the mode, I selected AES Cipher Block Chaining (CBC). CBC encrypts blocks of data by chaining them together. Each block of plaintext is XORed with the previous ciphertext block before being encrypted. The chaining ensures that even small changes in the plaintext affect multiple ciphertext blocks. (Elheni 2025)
+
+For both the password and the IV, I chose UTF-8 for convenience, even though using HEX would have been more secure. I input the text in RAW format and requested the output in HEX.
+
+
+
